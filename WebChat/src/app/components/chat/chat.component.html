@@ -34,7 +34,7 @@
         </ul>
         <div class="bottom_wrapper clearfix">
             <div class="message_input_wrapper">
-                <input class="message_input" placeholder="Message..." [(ngModel)]="messageInput" />
+                <input class="message_input" placeholder="Message..." [(ngModel)]="messageInput" (keyup.enter)="sendMessage()"/>
             </div>
             <button class="send_message" (click)="sendMessage()">
             </button>
