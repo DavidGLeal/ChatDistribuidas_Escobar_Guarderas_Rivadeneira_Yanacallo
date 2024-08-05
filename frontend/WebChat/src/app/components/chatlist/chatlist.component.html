@@ -1,0 +1,37 @@
+<div class="background">
+    <app-profile></app-profile>
+    <div class="notBox">
+        <div *ngFor="let notification of notifications" >
+            <h3>{{notification.chatName}}</h3>
+            <p>{{notification.userName}}: {{notification.messageText}}</p>
+        </div>
+    </div>
+    <button class="addChat" (click)="switchCreate()">+ Nuevo chat</button>
+    <div *ngIf="chatList.length > 0; else noChats" class="contactsContainer">
+        <div *ngFor = "let item of chatList"> 
+            <div (click) = "openChat(item.id)" class="contact">
+                <div [ngClass]="{'connected': item.connected === true, 'disconnected': item.connected === false}"></div>
+                <h2>{{item.title}}</h2>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <ng-template #noChats>
+        <div class="contactsContainer noChats">
+            <h1>Aún no hay salas registradas. Crea una nueva</h1>
+            <button class="add" (click)="switchCreate()"></button>
+        </div>
+    </ng-template>
+</div>
+<div class="fakeBack" *ngIf="toCreate">
+    <div class="createChat">
+        <div class="header">
+            <h2>Nueva Sala</h2>
+            <button (click)="switchCreate()" class="createClose"></button>
+        </div>
+        <input type="text" #roomName placeholder="Ingresa el nombre de la sala..." class="roomName">
+        <div class="toClose">
+            <button (click)="createChat(roomName.value)">Crear Sala</button>
+        </div>
+    </div>
+</div>

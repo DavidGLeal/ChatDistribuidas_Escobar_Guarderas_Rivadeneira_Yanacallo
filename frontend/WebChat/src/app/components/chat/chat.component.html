@@ -1,0 +1,49 @@
+<div class="background">
+    <app-profile></app-profile>
+    <div class="connectedus">
+        <h3>Usuarios conectados</h3>
+        <hr>
+        <ul class="usersList">
+            <li *ngFor="let user of usersList">
+                <div class="connContact">
+                    <div class="connecDot"></div>
+                    <p>{{user.userName}}</p>
+                    <p *ngIf="user.userId == currentUser.id"> (Tú)</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="chat_window">
+        <div class="top_menu">
+            <div class="buttons">
+                <button class="exit" (click)="exit()"></button>
+            </div>
+            <div class="title">
+                {{chat.title}}
+            </div>
+        </div>
+        <ul #scrollContainer class="messages">
+            <li class="message right" *ngFor="let item of messageList"
+                [ngClass]="{'left': item.message_side === 'receiver','right':item.message_side === 'sender'}">
+                <div class="avatar"><p>{{item.userName[0]}}</p></div>
+                <div class="usname" *ngIf="item.message_side === 'receiver'">{{item.userName}}</div>
+                <div class="text_wrapper">
+                    <div class="text">{{item.messageText}}</div>
+                </div>
+            </li>
+        </ul>
+        <div class="bottom_wrapper clearfix">
+            <div class="message_input_wrapper">
+                <input class="message_input" placeholder="Message..." [(ngModel)]="messageInput" />
+            </div>
+            <button class="send_message" (click)="sendMessage()">
+            </button>
+        </div>
+    </div>
+    <div class="joined" *ngIf="userJoined">
+        <h3>{{newUser}} se ha unido a la sala.</h3>
+    </div>
+    <div class="exited" *ngIf="userLeft">
+        <h3>{{oldUser}} abandonó la sala.</h3>
+    </div>
+</div>
