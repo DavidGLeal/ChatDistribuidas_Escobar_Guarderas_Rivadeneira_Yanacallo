@@ -1,0 +1,2 @@
+# Chat con WebSockets
+El proyecto para desarrollar un chat en tiempo real con la ayuda de Websockets se realizó con la metodología SCRUM repartiendonos en 4 sprints, además de ello se realizo este con la dvisión del Backend y el Frontend como normalmente se trabaja, para ello en el siguiente repositorio encontrará las siguientes carpetas, para el back esta ´´ChatProject´´ y el front se encuentra dentro de la carpeta ´´WebChat´´ 
